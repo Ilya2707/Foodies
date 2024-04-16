@@ -7,23 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.rememberNavController
-import com.example.foodies.features.products_list.presentation.catalog_screen.Catalog
-import com.example.foodies.features.products_list.presentation.catalog_screen.FixedTopline
 import com.example.foodies.navigation.Navigation
 import com.example.foodies.ui.theme.Pink40
-import com.example.foodies.ui.theme.Purple40
-import com.example.foodies.ui.theme.PurpleGrey40
 import com.example.foodies.ui.theme.Typography
 
 class MainActivity : ComponentActivity() {
@@ -79,11 +70,5 @@ fun ApplicationTheme(
 }
 
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+
 

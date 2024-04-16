@@ -55,13 +55,13 @@ fun ProductDetails() {
 
 
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.tomym),
-            contentDescription = null,
-            modifier = Modifier
-                .width(375.dp)
-                .height(375.dp)
-        )
+//        Image(
+//            painter = painterResource(id = R.drawable.tomym),
+//            contentDescription = null,
+//            modifier = Modifier
+//                .width(375.dp)
+//                .height(375.dp)
+//        )
         Box(
             modifier = Modifier
                 .padding(top = 24.dp)
