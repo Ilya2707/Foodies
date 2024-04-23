@@ -1,9 +1,6 @@
 package com.example.foodies.features.product_details.presentation
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.ScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,7 +26,7 @@ fun NutritionalValue() {
     Column(
         modifier = Modifier
             .width(375.dp)
-            .height(250 .dp)
+            .height(250.dp)
             .verticalScroll(rememberScrollState())
     ) {
         for (i in nutritionalValueNames) {
