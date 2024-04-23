@@ -18,6 +18,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,12 +36,14 @@ import com.example.foodies.ApplicationTheme
 import com.example.foodies.R
 import com.example.foodies.navigation.Screens
 @Composable
-fun ItemList(navController: NavController) {
+fun ItemList(navController: NavController,
+             viewModel: CatalogViewModel) {
+    val list by viewModel.productListState.collectAsState()
     LazyVerticalGrid(
         modifier = Modifier.padding(12.dp),
         columns = GridCells.Fixed(2)
     ) {
-        items(100) { i ->
+        items(list.size) { i ->
             Column(
                 modifier = Modifier
                     .padding(4.dp)
@@ -47,7 +51,8 @@ fun ItemList(navController: NavController) {
                     .height(290.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colorScheme.secondary)
-                    .clickable {navController.navigate(Screens.ProductDetailsScreen.route)},
+                    .clickable { navController.navigate(Screens.ProductDetailsScreen.route) }
+                ,
 
                 //horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -60,8 +65,8 @@ fun ItemList(navController: NavController) {
                 )
 
                 Text(
-                    text = "Название блюда",
-                    style = MaterialTheme.typography.titleLarge,
+                    text = list[i].name,
+                    style = MaterialTheme.typography.displayMedium,
                     modifier = Modifier
                         .padding(
                             start = 12.dp,
@@ -72,7 +77,7 @@ fun ItemList(navController: NavController) {
                 )
 
                 Text(
-                    text = "500 г",
+                    text = "${list[i].measure} ${list[i].measureUnit}",
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier
                         .padding(
@@ -97,7 +102,7 @@ fun ItemList(navController: NavController) {
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Text(
-                        text = "480 ₽",
+                        text = list[i].priceCurrent.toString(),
                         style = MaterialTheme.typography.bodyLarge,
                     )
                 }
@@ -106,3 +111,5 @@ fun ItemList(navController: NavController) {
         }
     }
 }
+
+

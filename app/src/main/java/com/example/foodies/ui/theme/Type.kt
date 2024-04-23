@@ -20,10 +20,12 @@ val Typography = Typography(
     ),
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
+        fontStyle = FontStyle(R.font.roboto_light),
         fontWeight = FontWeight.W400,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.sp
+        fontSize = 34.sp,
+        lineHeight = 36.sp,
+        letterSpacing = 0.sp,
+        color = Color.Black
     )
     ,
     labelSmall = TextStyle(
@@ -46,5 +48,26 @@ val Typography = Typography(
         fontSize = 14.sp,
         lineHeight = 20.sp,
         color = Color.Gray
+    ),
+    bodySmall = TextStyle(
+        fontStyle = FontStyle(R.font.roboto_light),
+        fontWeight = FontWeight.W400,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        color = Color.Gray
+    ),
+    displayLarge = TextStyle(
+        fontStyle = FontStyle(R.font.roboto_light),
+        fontWeight = FontWeight.W400,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        color = Color.Black
+    ),
+    displayMedium = TextStyle(
+        fontStyle = FontStyle(R.font.roboto_light),
+        fontWeight = FontWeight.W400,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        color = Color.Black
     )
 )

@@ -42,11 +42,13 @@ import com.example.foodies.R
 import com.example.foodies.navigation.Screens
 
 @Composable
-fun FixedTopline(navController: NavController) {
+fun FixedTopline(navController: NavController,
+                 viewModel: CatalogViewModel) {
     Column(modifier = Modifier.fillMaxSize()) {
         Topline()
         Categories()
-        ItemList(navController)
+        ItemList(navController,
+            viewModel = viewModel)
     }
 }
 

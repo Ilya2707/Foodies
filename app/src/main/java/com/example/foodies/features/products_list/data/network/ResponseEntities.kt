@@ -7,7 +7,7 @@ data class ProductItem(
     @Json(name = "category_id") val categoryId: Int? = null,
     @Json(name = "name") val name: String = "",
     @Json(name = "description") val description: String = "",
-    @Json(name = "image") val image: Int? = null,
+    @Json(name = "image") val image: String = "",
     @Json(name = "price_current") val priceCurrent: Int? = null,
     @Json(name = "price_old") val priceOld: Int? = null,
     @Json(name = "measure") val measure: Int? = null,

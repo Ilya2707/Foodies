@@ -1,5 +1,7 @@
 package com.example.foodies
 
+import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,16 +11,40 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.foodies.dagger.AppComponent
+import com.example.foodies.dagger.DaggerAppComponent
+import com.example.foodies.features.products_list.presentation.catalog_screen.CatalogViewModel
 import com.example.foodies.navigation.Navigation
 import com.example.foodies.ui.theme.Pink40
 import com.example.foodies.ui.theme.Typography
+import javax.inject.Inject
+
+
+class MainApp : Application() {
+    lateinit var appComponent: AppComponent
+    override fun onCreate() {
+        super.onCreate()
+        appComponent = DaggerAppComponent.create()
+    }
+}
+
+val Context.appComponent: AppComponent
+    get() = when (this) {
+        is MainApp -> appComponent
+        else -> this.applicationContext.appComponent
+    }
+
 
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var catalogViewModel: CatalogViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent.inject(this)
+        //val catalogViewModel: CatalogViewModel = appComponent.catalogViewModel()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
@@ -30,7 +56,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize(),
                         color = MaterialTheme.colorScheme.background
                     ) {
-                        Navigation()
+                        Navigation(catalogViewModel)
                     }
                 } // A surface container using the 'background' color from the theme
 
